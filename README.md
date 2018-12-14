@@ -1,2 +1,2 @@
 # Notes
-General notes
+General notes and various subjects
