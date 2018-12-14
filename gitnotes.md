@@ -97,8 +97,14 @@ Parent repo only knows that something has changed and tracks HEAD of subrepo.
 
 To clone a repo which has subrepos: 
 ```
-git clone ssh://git@gitlab.bt.local:2224/server/sensor-manager.git --recursive-modules
+git clone <repo url> --recursive-modules
 ```
 
 If the repo has already cloned, run: ```git submodule update --init –recursive```
 To update: ```git submodule update```
+
+If submodule has been update, in order for the parent to point to it:
+```
+git submodule update --remote <submodule name>/
+```
+Then commit.
