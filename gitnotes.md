@@ -79,9 +79,16 @@ git config --global alias.lol "log --color --graph --pretty=format:'%Cred%h%Cres
 ```Git fetch``` gets the latest from the cloned repo, but doesn’t update HEAD. SAFE to do as often as you want
 ```Git pull``` gets the latest from the cloned repo and update HEAD: git fetch + git pull
 
-git show <first 7 chars of ID>
+Update local master to be teh same as remote master:
+```bash
+git fetch origin
+git reset --hard origin/master
+```
+
+```git show <first 7 chars of ID>```
 *	Shows just the diff, but entire snapshot is stored
 *	Computes the diff everytime
+
 ```
 git cat-file 
 git cat-file blob <xxxxxxx>
