@@ -74,6 +74,7 @@ See images
 ```
 docker image ls
 docker images
+```
 
 ## Layers
 
