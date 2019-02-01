@@ -20,7 +20,20 @@ Make a file executable:
 $ chmod +x filename 
 ```
 
+Change owner of file:
+```
+$ chown user:group filename
+$ chown -R user:grouo dirname
+```
+
 Get IP addresses:
 ```
 $ ip addr show 
 ```
+
+Delete directory and all contents:
+```
+$ rm -rf dirname
+```
+
+

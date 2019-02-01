@@ -45,7 +45,7 @@ Print the name of the upstream branch
 git branch –vv 
 ```
 
-Merge – creates a commit with 2 par
+Merge – creates a commit which ties together the 2 branches - non-destructive, everything is intact
 Rebase - Instead of merging, which creates new commit with 2 parents – just replay changes on top of common ancestor
 * Difficult when there are big differences between branches
 * Creates a patch file
@@ -58,6 +58,11 @@ Detached Head
 INDEX (Synonyms: stage or cache) 
 * This is what’s going to be your next commit – snapshot (entire repo)
 ```git ls-files –stage```
+
+Head is a reference to the last commit in the currently checked-out branch
+
+Modify last commit
+```git commit -amend``` Modifies the last commit with current index changes
 
 Show what’s stored inside the INDEX for each file
 ```git ls-files –debug```
@@ -76,8 +81,8 @@ Create an alias for a nicer looking log:
 git config --global alias.lol "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 ```
 
-```Git fetch``` gets the latest from the cloned repo, but doesn’t update HEAD. SAFE to do as often as you want
-```Git pull``` gets the latest from the cloned repo and update HEAD: git fetch + git pull
+```git fetch``` gets the latest from the cloned repo, but doesn’t update HEAD. SAFE to do as often as you want
+```git pull``` gets the latest from the cloned repo and update HEAD: git fetch + git pull
 
 Update local master to be teh same as remote master:
 ```bash
@@ -94,6 +99,21 @@ git cat-file
 git cat-file blob <xxxxxxx>
 git reset –hard xxxxxxx
 git diff HEAD—HEAD~1
+```
+
+Move file
+```bash
+git mv old-filename new-filename
+```
+
+Shows interesting info about remotes and if have stale
+```bash
+git remote show origin
+```
+
+Remove stale branches (may have been merged out)
+```bash
+git branch -r -d origin/dev-xx
 ```
 
 Git stash – save changes, then you can come back to later
@@ -115,3 +135,10 @@ If submodule has been update, in order for the parent to point to it:
 git submodule update --remote <submodule name>/
 ```
 Then commit.
+
+## Git Index
+The index (AKA stage or cahce)  is a binary file, generally kept in .git/index, which contains a sorted list of path names, eaxch with permissions and teh SHA1 of a blob object. ```git ls-files``` shows the contents.
+
+## Git Clean
+Cleans the working tree by recursively removing files that are not under version control, starting from the current directory. Use -n for a dry run to see what would be deleted. Use -f to delete the files.
+
